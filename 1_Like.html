@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Like & Comment System</title>
+</head>
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .post {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .like-comment {
+        margin-top: 20px;
+    }
+
+    button {
+        background-color: #007BFF;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .comments-section {
+        margin-top: 20px;
+    }
+
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        background-color: #e9e9e9;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+</style>
+
+
+<body>
+    <div class="post">
+        <h2>Post Title</h2>
+        <p>This is an example of a post where users can like and comment.</p>
+        <div class="like-comment">
+            <button id="likeButton" onclick="likePost()">Like (<span id="likeCount">0</span>)</button>
+        </div>
+        <div class="comments-section">
+            <h3>Comments</h3>
+            <ul id="commentsList">
+                <!-- Comments will be appended here -->
+            </ul>
+            <textarea id="commentInput" placeholder="Write a comment..."></textarea>
+            <button onclick="addComment()">Add Comment</button>
+        </div>
+    </div>
+
+    <script>
+
+        // scripts.js
+
+        let likeCount = 0;
+
+        function likePost() {
+            likeCount++;
+            document.getElementById('likeCount').innerText = likeCount;
+        }
+
+        function addComment() {
+            const commentInput = document.getElementById('commentInput');
+            const commentText = commentInput.value.trim();
+
+            if (commentText !== '') {
+                const commentList = document.getElementById('commentsList');
+                const newComment = document.createElement('li');
+                newComment.textContent = commentText;
+                commentList.appendChild(newComment);
+                commentInput.value = ''; // Clear the textarea
+            } else {
+                alert('Please enter a comment before adding.');
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
